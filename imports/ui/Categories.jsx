@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { withTracker } from 'meteor/react-meteor-data'
-import {ToastsCollection} from '/imports/api/ToastsCollection'
+import {CategoriesCollection} from '/imports/api/CategoriesCollection'
 
-class Toasts extends Component {
+class Categories extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -31,23 +31,25 @@ class Toasts extends Component {
         });
       }
     })
-    
+    this.setState({name:''})
+  }
+  renderCategoriesTable() {
+    return this.props.categories.map((category, index)=>(
+      <tr key={index}>
+        <td>
+          {index+1}
+        </td>
+        <td>
+          {category.name}
+        </td>
+      </tr>
+    ))
   }
   render() {
     return (
       <div>
         <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-          <h1 className="h2">Toasts</h1>
-          <div className="btn-toolbar mb-2 mb-md-0">
-            <div className="btn-group mr-2">
-              <button className="btn btn-sm btn-outline-secondary">Share</button>
-              <button className="btn btn-sm btn-outline-secondary">Export</button>
-            </div>
-            <button className="btn btn-sm btn-outline-secondary dropdown-toggle">
-              <span data-feather="calendar" />
-              This week
-            </button>
-          </div>
+          <h1 className="h2">Категории</h1>
         </div>
         <div className="card" style={{width: '24rem'}}>
           <div className="card-body">
@@ -70,14 +72,26 @@ class Toasts extends Component {
             </form>
           </div>
         </div>
+        <br />
+        <table className="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Название</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.renderCategoriesTable()}
+          </tbody>
+        </table>
       </div>
     )
   }
 }
 
 export default withTracker(props=> {
-  Meteor.subscribe('toasts')
+  Meteor.subscribe('categories')
   return {
-    toasts: ToastsCollection.find({}).fetch()
+    categories: CategoriesCollection.find({}).fetch()
   }
-})(Toasts)
+})(Categories)

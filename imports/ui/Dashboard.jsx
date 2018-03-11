@@ -3,6 +3,8 @@ import { Link, NavLink, Switch, Route } from 'react-router-dom'
 
 import Empty from './Empty'
 import Toasts from './Toasts'
+import Sidemenu from './Sidemenu'
+import Categories from './Categories'
 
 class Dashboard extends Component {
   constructor(props){
@@ -29,33 +31,11 @@ class Dashboard extends Component {
         </nav>
         <div className="container-fluid">
           <div className="row">
-            <nav className="col-md-2 d-none d-md-block bg-light sidebar">
-              <div className="sidebar-sticky">
-                <ul className="nav flex-column">
-                  <li className="nav-item">
-                    <NavLink className="nav-link" exact to="/admin">
-                      <i className="fa fa-dashboard"></i>
-                      &nbsp;Dashboard 
-                    </NavLink>
-                  </li>
-                  <li className="nav-item">
-                    <NavLink className="nav-link" exact to="/admin/toasts">
-                      <i className="fa fa-book"></i>
-                      &nbsp;Toasts
-                    </NavLink>
-                  </li>
-                  <li className="nav-item">
-                    <a className="nav-link" href="#">
-                      <i className="fa fa-users"></i>
-                      &nbsp;Users
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </nav>
+            <Sidemenu />
             <main role="main" className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
               <Switch>
                 <Route path='/admin/toasts' component={Toasts} />
+                <Route path='/admin/categories' component={Categories} />
                 <Route component={Empty} />
               </Switch>
             </main>

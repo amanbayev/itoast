@@ -1,4 +1,6 @@
 import { Meteor } from 'meteor/meteor';
+import '/imports/api/ToastsCollection'
+import '/imports/api/CategoriesCollection'
 
 Meteor.startup(() => {
   // code to run on server at startup
@@ -14,5 +16,17 @@ Meteor.startup(() => {
         }
     });
     Roles.addUsersToRoles(cUser, 'admin')
+    
+    let testUser = Accounts.createUser({
+      username: 'test',
+      email: 'test@test.kz',
+      password: '123',
+      profile: {
+        first_name: 'Test',
+        last_name: 'User',
+        company: 'iToast'
+      }
+    })
+    Roles.addUsersToRoles(testUser, 'admin')
   }
 });
