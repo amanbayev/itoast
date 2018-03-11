@@ -10,8 +10,12 @@ if (Meteor.isServer) {
 
 Meteor.methods({
   'category.insert' (category) {
+    if (category.name.length < 3) {
+      throw new Meteor.Error('short-name', "Короткое название! Должно быть больше 3х символов!");
+    }
     category.createdAt = new Date()
     category.createdBy = this.userId
+    category.counter = 0
     CategoriesCollection.insert(category)
   }
 })

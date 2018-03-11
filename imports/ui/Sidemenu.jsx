@@ -8,26 +8,20 @@ export default Sidemenu = props => (
         <li className="nav-item">
           <NavLink className="nav-link" exact to="/admin">
             <i className="fa fa-dashboard"></i>
-            &nbsp;Dashboard 
+            &nbsp;Главная 
           </NavLink>
         </li>
         <li className="nav-item">
           <NavLink className="nav-link" exact to="/admin/categories">
             <i className="fa fa-gears"></i>
-            &nbsp;Categories
+            &nbsp;Категории
           </NavLink>
         </li>
         <li className="nav-item">
           <NavLink className="nav-link" exact to="/admin/toasts">
             <i className="fa fa-book"></i>
-            &nbsp;Toasts
+            &nbsp;Тосты
           </NavLink>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link" href="#">
-            <i className="fa fa-users"></i>
-            &nbsp;Users
-          </a>
         </li>
       </ul>
     </div>
