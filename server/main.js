@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
-import '/imports/api/ToastsCollection'
-import '/imports/api/CategoriesCollection'
+import { ToastsCollection } from '/imports/api/ToastsCollection'
+import { CategoriesCollection } from '/imports/api/CategoriesCollection'
 
 Meteor.startup(() => {
   // code to run on server at startup
@@ -30,3 +30,40 @@ Meteor.startup(() => {
     Roles.addUsersToRoles(testUser, 'admin')
   }
 });
+
+var Api = new Restivus({
+  useDefaultAuth: false,
+  prettyJson: true
+})
+
+
+Api.addCollection(ToastsCollection, {
+  excludedEndpoints: ['put', 'delete'],
+  routeOptions: {
+    authRequired: false
+  },
+  path: 'toasts',
+  endpoints: {
+    getAll: {
+      authRequired: false
+    },
+    get: {
+      authRequired: false
+    }
+  }
+})
+Api.addCollection(CategoriesCollection, {
+  excludedEndpoints: ['put', 'delete'],
+  routeOptions: {
+    authRequired: false
+  },
+  path: 'categories',
+  endpoints: {
+    getAll: {
+      authRequired: false
+    },
+    get: {
+      authRequired: false
+    }
+  }
+})
