@@ -22,9 +22,11 @@ class SingleToast extends Component {
             <h5 className="card-title">
               Тост из категории {this.props.toast.catName}
             </h5>
-            <p className="card-text">
-              {this.props.toast.text}  
-            </p>
+            <div className="card-text">
+              <pre>
+                {this.props.toast.text}
+              </pre>  
+            </div>
             <button className="btn btn-primary"
               onClick={(e)=>{this.props.history.goBack()}}>
               <i className="fa fa-arrow-left" ></i>&nbsp;
