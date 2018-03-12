@@ -34,7 +34,10 @@ class Dashboard extends Component {
             <Sidemenu />
             <main role="main" className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
               <Switch>
-                <Route path='/admin/toasts' component={Toasts} />
+                <Route 
+                  path='/admin/toasts' 
+                  component={Toasts} 
+                />
                 <Route path='/admin/categories' component={Categories} />
                 <Route component={Empty} />
               </Switch>

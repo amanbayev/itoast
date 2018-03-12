@@ -42,6 +42,9 @@ class Categories extends Component {
         <td>
           {category.name}
         </td>
+        <td>
+          {category.counter}
+        </td>
       </tr>
     ))
   }
@@ -78,6 +81,7 @@ class Categories extends Component {
             <tr>
               <th>#</th>
               <th>Название</th>
+              <th>Количество тостов</th>
             </tr>
           </thead>
           <tbody>
