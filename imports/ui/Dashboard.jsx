@@ -23,17 +23,45 @@ class Dashboard extends Component {
       <div>
         <nav className="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
           <a className="navbar-brand col-sm-3 col-md-2 mr-0" href="#">iToast</a>
-          <input className="form-control form-control-dark w-100" type="text" placeholder="Поиск пока не работает" aria-label="Search" />
-          <ul className="navbar-nav px-3">
-            <li className="nav-item text-nowrap">
-              <Link onClick={this.logout.bind(this)} className="nav-link" to="/login">Выйти</Link>
-            </li>
-          </ul>
+          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
+          </button>
+
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav mr-auto">
+              <li className="nav-item">
+                <NavLink className="nav-link" exact to="/admin">
+                  <i className="fa fa-dashboard"></i>
+                  &nbsp;Главная 
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" exact to="/admin/types">
+                  <i className="fa fa-bars"></i>
+                  &nbsp;Типы
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" exact to="/admin/categories">
+                  <i className="fa fa-gears"></i>
+                  &nbsp;Категории
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" exact to="/admin/toasts">
+                  <i className="fa fa-book"></i>
+                  &nbsp;Записи
+                </NavLink>
+              </li>
+              <li className="nav-item text-nowrap">
+                <Link onClick={this.logout.bind(this)} className="nav-link" to="/login">Выйти</Link>
+              </li>
+            </ul>
+          </div>
         </nav>
         <div className="container-fluid">
           <div className="row">
-            <Sidemenu />
-            <main role="main" className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+            <main role="main" className="col-md ml-sm-auto pt-3 p-4">
               <Switch>
                 <Route 
                   path='/admin/toasts' 
