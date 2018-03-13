@@ -5,6 +5,7 @@ import Empty from './Empty'
 import Toasts from './Toasts'
 import Sidemenu from './Sidemenu'
 import Categories from './Categories'
+import Types from './Types'
 
 class Dashboard extends Component {
   constructor(props){
@@ -38,6 +39,10 @@ class Dashboard extends Component {
                   path='/admin/toasts' 
                   component={Toasts} 
                 />
+                <Route
+                  path='/admin/types'
+                  component={Types}
+                  />
                 <Route path='/admin/categories' component={Categories} />
                 <Route component={Empty} />
               </Switch>

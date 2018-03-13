@@ -1,5 +1,6 @@
 import { Mongo } from 'meteor/mongo'
 import { CategoriesCollection } from './CategoriesCollection'
+import { TypesCollection } from './TypesCollection'
 
 export const ToastsCollection = new Mongo.Collection('toasts')
 
@@ -19,5 +20,24 @@ Meteor.methods({
       { $inc: { counter: 1 }},
       { upsert: true }
     )
+    TypesCollection.update(
+      {_id: toast.typeId},
+      { $inc: { counter: 1 }},
+      { upsert: true }
+    )
+  },
+  'toasts.remove' (toastId) {
+    let toast = ToastsCollection.findOne({_id: toastId})
+    CategoriesCollection.update(
+      {_id: toast.catId},
+      { $inc: { counter: -1 }},
+      { upsert: true }
+    )
+    TypesCollection.update(
+      {_id: toast.typeId},
+      { $inc: { counter: -1 }},
+      { upsert: true }
+    )
+    ToastsCollection.remove(toast._id)
   }
 })

@@ -12,6 +12,12 @@ export default Sidemenu = props => (
           </NavLink>
         </li>
         <li className="nav-item">
+          <NavLink className="nav-link" exact to="/admin/types">
+            <i className="fa fa-bars"></i>
+            &nbsp;Типы
+          </NavLink>
+        </li>
+        <li className="nav-item">
           <NavLink className="nav-link" exact to="/admin/categories">
             <i className="fa fa-gears"></i>
             &nbsp;Категории

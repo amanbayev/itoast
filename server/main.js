@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { ToastsCollection } from '/imports/api/ToastsCollection'
 import { CategoriesCollection } from '/imports/api/CategoriesCollection'
+import { TypesCollection } from '/imports/api/TypesCollection'
 
 Meteor.startup(() => {
   // code to run on server at startup
@@ -36,9 +37,13 @@ var Api = new Restivus({
   prettyJson: true
 })
 
+// remove everything in db
+ToastsCollection.remove({})
+TypesCollection.remove({})
+CategoriesCollection.remove({})
 
 Api.addCollection(ToastsCollection, {
-  excludedEndpoints: ['put', 'delete'],
+  excludedEndpoints: ['put', 'delete', 'patch', 'update'],
   routeOptions: {
     authRequired: false
   },
@@ -52,8 +57,25 @@ Api.addCollection(ToastsCollection, {
     }
   }
 })
+
+Api.addCollection(TypesCollection, {
+  excludedEndpoints: ['put', 'delete', 'patch', 'update'],
+  routeOptions: {
+    authRequired: false
+  },
+  path: 'types',
+  endpoints: {
+    getAll: {
+      authRequired: false
+    },
+    get: {
+      authRequired: false
+    }
+  }
+})
+
 Api.addCollection(CategoriesCollection, {
-  excludedEndpoints: ['put', 'delete'],
+  excludedEndpoints: ['put', 'delete', 'patch', 'update'],
   routeOptions: {
     authRequired: false
   },
