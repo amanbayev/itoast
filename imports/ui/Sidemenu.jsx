@@ -26,7 +26,7 @@ export default Sidemenu = props => (
         <li className="nav-item">
           <NavLink className="nav-link" exact to="/admin/toasts">
             <i className="fa fa-book"></i>
-            &nbsp;Тосты
+            &nbsp;Записи
           </NavLink>
         </li>
       </ul>

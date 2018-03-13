@@ -38,9 +38,9 @@ var Api = new Restivus({
 })
 
 // remove everything in db
-ToastsCollection.remove({})
-TypesCollection.remove({})
-CategoriesCollection.remove({})
+// ToastsCollection.remove({})
+// TypesCollection.remove({})
+// CategoriesCollection.remove({})
 
 Api.addCollection(ToastsCollection, {
   excludedEndpoints: ['put', 'delete', 'patch', 'update'],
